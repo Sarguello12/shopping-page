@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import { searchFunctionality } from "./Services/SearchFunctionality";
+import SearchResults from "./Components/SearchResults";
 
 function App() {
+  // searchFunctionality("jeans", 1);
+  // const [search, setSearch] = useState("");
+
+  // const searchChangeHandler = (event) => {
+  //   setSearch(event.target.value);
+  // };
+
+  // const searchHandler = (event) => {
+  //   event.preventDefault();
+  //   searchFunctionality(search, 1);
+  // };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <form onSubmit={searchHandler}>
+        <label>Search:</label>
+        <input onKeyUp={searchChangeHandler}></input>
+        <button>Go</button>
+      </form> */}
+      <SearchResults />
     </div>
   );
 }
