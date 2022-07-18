@@ -20,6 +20,7 @@ const SearchResults = () => {
 
   const forwadPageHandler = async (event) => {
     event.preventDefault();
+    window.scrollTo(0, 0);
     let pageNum = page + 1;
     setPage(pageNum);
     let response = await searchFunctionality(search, page);
@@ -28,6 +29,7 @@ const SearchResults = () => {
 
   const previousPageHandler = async (event) => {
     event.preventDefault();
+    window.scrollTo(0, 0);
     let pageNum = -1;
     setPage(pageNum);
     let response = await searchFunctionality(search, page);
@@ -43,13 +45,18 @@ const SearchResults = () => {
       </form>
       <div>
         {results.map((result, index) => {
-          //   return <p key={index}>{result.id}</p>;
           return <ResultsCards key={index} {...result}></ResultsCards>;
         })}
       </div>
       <div>
-        <button onClick={previousPageHandler}>back</button>
-        <button onClick={forwadPageHandler}>forward</button>
+        {page === 1 ? (
+          <button onClick={forwadPageHandler}>forward</button>
+        ) : (
+          <div>
+            <button onClick={previousPageHandler}>back</button>{" "}
+            <button onClick={forwadPageHandler}>forward</button>
+          </div>
+        )}
       </div>
     </div>
   );
