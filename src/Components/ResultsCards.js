@@ -4,20 +4,24 @@ import React from "react";
 // object properties are then accessed and displayed to the page
 const ResultsCards = (props) => {
   return (
-    <div>
+    <div className="result-card">
       <img src={props.thumbnailImageUrl}></img>
-      <p>{props.name}</p>
-      {/* if product msrp is more than product price msrp will be displayed with a line through it (styling in scss file) */}
-      {props.msrp > props.price ? (
-        <div>
-          <p className="msrp">${props.msrp}</p>
-          <p>${props.price}</p>
+      <div className="result-card__info">
+        <p>{props.name}</p>
+        <div className="result-card__price">
+          {/* if product msrp is more than product price msrp will be displayed with a line through it (styling in scss file) */}
+          {props.msrp > props.price ? (
+            <div>
+              <p className="msrp">${props.msrp}</p>
+              <p className="price">${props.price}</p>
+            </div>
+          ) : (
+            <div>
+              <p className="price">${props.price}</p>
+            </div>
+          )}
         </div>
-      ) : (
-        <div>
-          <p>${props.price}</p>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

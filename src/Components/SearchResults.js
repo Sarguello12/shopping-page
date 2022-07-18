@@ -10,7 +10,7 @@ const SearchResults = () => {
   // page state will contain number that indicates which page the user is on
   const [page, setPage] = useState(1);
 
-  const [navigation, setNavigation] = useState(false);
+  const [fetchingData, setfetchingData] = useState(false);
 
   //========== Search Logic ==========
   // function will update search to contain value entered in search bar
@@ -25,7 +25,7 @@ const SearchResults = () => {
     event.preventDefault();
     // let response = await searchFunctionality(search, page);
     // setResults(response);
-    setNavigation(true);
+    setfetchingData(true);
   };
 
   //========== Pagination Logic ==========
@@ -35,17 +35,17 @@ const SearchResults = () => {
     const getData = async () => {
       let data = await searchFunctionality(search, page);
       setResults(data);
-      setNavigation(false);
+      setfetchingData(false);
     };
     getData();
-  }, [navigation]);
+  }, [fetchingData]);
 
   // updates page state to increment the page by one on button click
-  const forwadPageHandler = async (event) => {
+  const nextPageHandler = async (event) => {
     event.preventDefault();
     window.scrollTo(0, 0);
     setPage(page + 1);
-    setNavigation(true);
+    setfetchingData(true);
   };
 
   // updates page state to decrease the page by one on button click
@@ -53,17 +53,19 @@ const SearchResults = () => {
     event.preventDefault();
     window.scrollTo(0, 0);
     setPage(page - 1);
-    setNavigation(true);
+    setfetchingData(true);
   };
 
   return (
     <div>
-      <form onSubmit={searchHandler}>
-        <label>Search:</label>
-        <input onChange={searchChangeHandler}></input>
-        <button type="submit">Go</button>
-      </form>
-      <div>
+      <div className="nav">
+        <form onSubmit={searchHandler}>
+          <input onChange={searchChangeHandler}></input>
+          <button type="submit">Go</button>
+        </form>
+      </div>
+
+      <div className="results-container">
         {/* creates a new array of objects and passes them into the ResultsCard component via props */}
         {results.map((result, index) => {
           return <ResultsCards key={index} {...result}></ResultsCards>;
@@ -75,7 +77,7 @@ const SearchResults = () => {
         {page === 1 ? (
           <span></span>
         ) : (
-          <button onClick={previousPageHandler}>back</button>
+          <button onClick={previousPageHandler}>previous</button>
         )}
       </div>
       <div>
@@ -83,7 +85,7 @@ const SearchResults = () => {
         {results.length < 19 ? (
           <span></span>
         ) : (
-          <button onClick={forwadPageHandler}>forward</button>
+          <button onClick={nextPageHandler}>next</button>
         )}
       </div>
     </div>

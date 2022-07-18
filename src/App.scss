@@ -1,3 +1,54 @@
+$primary-font: "Montserrat", sans-serif;
+$accent-color: #3a23ad;
+$font-color1: #616161;
+$font-color2: #cbcbcb;
+
+* {
+  font-family: $primary-font;
+}
+
+.results-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.result-card {
+  width: 267px;
+  text-align: center;
+  margin: 10px;
+
+  .result-card__info {
+    padding: 0 15px 5px 15px;
+
+    p {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      color: $font-color1;
+    }
+
+    .result-card__price {
+      display: flex;
+      justify-content: center;
+
+      p {
+        display: inline;
+        color: $font-color2;
+      }
+
+      .msrp {
+        margin-right: 10px;
+        font-style: italic;
+      }
+
+      .price {
+        font-weight: bold;
+        font-size: 20px;
+        color: $accent-color;
+      }
+    }
+  }
+}
+
 .msrp {
   text-decoration-line: line-through;
 }
