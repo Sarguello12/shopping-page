@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { searchFunctionality } from "../Services/SearchFunctionality";
 import ResultsCards from "./ResultsCards";
 
@@ -7,13 +7,21 @@ const SearchResults = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
+  useEffect(() => {
+    const getData = async () => {
+      let data = await searchFunctionality(search, page);
+      setResults(data);
+    };
+    getData();
+  }, [page]);
+
   const searchChangeHandler = (event) => {
     setSearch(event.target.value);
+    setPage(1);
   };
 
   const searchHandler = async (event) => {
     event.preventDefault();
-    setPage(1);
     let response = await searchFunctionality(search, page);
     setResults(response);
   };
@@ -25,13 +33,12 @@ const SearchResults = () => {
     setPage(pageNum);
     let response = await searchFunctionality(search, page);
     setResults(response);
-    // console.log(results.length);
   };
 
   const previousPageHandler = async (event) => {
     event.preventDefault();
     window.scrollTo(0, 0);
-    let pageNum = -1;
+    let pageNum = page - 1;
     setPage(pageNum);
     let response = await searchFunctionality(search, page);
     setResults(response);
