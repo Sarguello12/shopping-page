@@ -10,18 +10,22 @@ const SearchResults = () => {
   // page state will contain number that indicates which page the user is on
   const [page, setPage] = useState(1);
 
+  const [navigation, setNavigation] = useState(false);
+
   //========== Search Logic ==========
   // function will update search to contain value entered in search bar
   const searchChangeHandler = (event) => {
     setSearch(event.target.value);
+    setPage(1);
   };
 
   // executes the initial fetch request to populate data based on the users input on submit
   // using the search state that was previously set
   const searchHandler = async (event) => {
     event.preventDefault();
-    let response = await searchFunctionality(search, page);
-    setResults(response);
+    // let response = await searchFunctionality(search, page);
+    // setResults(response);
+    setNavigation(true);
   };
 
   //========== Pagination Logic ==========
@@ -31,15 +35,17 @@ const SearchResults = () => {
     const getData = async () => {
       let data = await searchFunctionality(search, page);
       setResults(data);
+      setNavigation(false);
     };
     getData();
-  }, [page]);
+  }, [navigation]);
 
   // updates page state to increment the page by one on button click
   const forwadPageHandler = async (event) => {
     event.preventDefault();
     window.scrollTo(0, 0);
     setPage(page + 1);
+    setNavigation(true);
   };
 
   // updates page state to decrease the page by one on button click
@@ -47,6 +53,7 @@ const SearchResults = () => {
     event.preventDefault();
     window.scrollTo(0, 0);
     setPage(page - 1);
+    setNavigation(true);
   };
 
   return (
