@@ -25,6 +25,7 @@ const SearchResults = () => {
     setPage(pageNum);
     let response = await searchFunctionality(search, page);
     setResults(response);
+    // console.log(results.length);
   };
 
   const previousPageHandler = async (event) => {
@@ -48,14 +49,19 @@ const SearchResults = () => {
           return <ResultsCards key={index} {...result}></ResultsCards>;
         })}
       </div>
+
       <div>
         {page === 1 ? (
-          <button onClick={forwadPageHandler}>forward</button>
+          <span></span>
         ) : (
-          <div>
-            <button onClick={previousPageHandler}>back</button>{" "}
-            <button onClick={forwadPageHandler}>forward</button>
-          </div>
+          <button onClick={previousPageHandler}>back</button>
+        )}
+      </div>
+      <div>
+        {results.length < 19 ? (
+          <span></span>
+        ) : (
+          <button onClick={forwadPageHandler}>forward</button>
         )}
       </div>
     </div>
