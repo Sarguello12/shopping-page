@@ -1,7 +1,7 @@
 # Search-page
 
-### a simple search page developed using the Searchspring API, React and styled with Sass
-#### documentaion for the Searchspring API can be found here:
+### A simple search page developed using the Searchspring API, functionality through React and styled with Sass
+#### Documentation for the Searchspring API can be found here:
 #### https://searchspring.zendesk.com/hc/en-us/sections/115000119223-Search-API
 
 #### Goals
@@ -12,3 +12,4 @@
 #### Tech Stack 
 - React 
 - Sass
+
