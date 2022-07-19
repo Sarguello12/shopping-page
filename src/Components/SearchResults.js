@@ -58,10 +58,13 @@ const SearchResults = () => {
 
   return (
     <div>
-      <div className="nav">
+      <div className="searchbar">
         <form onSubmit={searchHandler}>
-          <input onChange={searchChangeHandler}></input>
-          <button type="submit">Go</button>
+          <input
+            onChange={searchChangeHandler}
+            placeholder="search for item, color..."
+          ></input>
+          <button type="submit">Search</button>
         </form>
       </div>
 
@@ -71,22 +74,23 @@ const SearchResults = () => {
           return <ResultsCards key={index} {...result}></ResultsCards>;
         })}
       </div>
-
-      <div>
-        {/* if user is on the first page button will be hidden */}
-        {page === 1 ? (
-          <span></span>
-        ) : (
-          <button onClick={previousPageHandler}>previous</button>
-        )}
-      </div>
-      <div>
-        {/* if user is on the last page (results are less than the 20 which are displayed on each page) button will be hidden */}
-        {results.length < 19 ? (
-          <span></span>
-        ) : (
-          <button onClick={nextPageHandler}>next</button>
-        )}
+      <div className="pagination-buttons">
+        <div>
+          {/* if user is on the first page button will be hidden */}
+          {page === 1 ? (
+            <span></span>
+          ) : (
+            <button onClick={previousPageHandler}>Previous</button>
+          )}
+        </div>
+        <div>
+          {/* if user is on the last page (results are less than the 20 which are displayed on each page) button will be hidden */}
+          {results.length < 19 ? (
+            <span></span>
+          ) : (
+            <button onClick={nextPageHandler}>Next</button>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,21 +1,75 @@
 $primary-font: "Montserrat", sans-serif;
 $accent-color: #3a23ad;
 $font-color1: #616161;
-$font-color2: #cbcbcb;
+$font-color2: #aeaeae;
+$font-color3: #e9e9ed;
 
-* {
+.app {
   font-family: $primary-font;
+  width: 100vw;
+  height: 100vh;
+}
+
+.searchbar {
+  background-color: $font-color2;
+  width: 100vw;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 10px solid $accent-color;
+
+  input {
+    width: 400px;
+    padding: 15px 10px;
+    background-color: $font-color3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    display: block;
+    margin: auto;
+    background-color: $accent-color;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+  }
 }
 
 .results-container {
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px;
+
+  button {
+    font-size: 17px;
+    width: 100px;
+    background-color: $accent-color;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+  }
+
+  button:hover {
+    background-color: $font-color1;
+    cursor: pointer;
+  }
 }
 
 .result-card {
   width: 267px;
   text-align: center;
   margin: 10px;
+  background-color: #ffffff;
 
   .result-card__info {
     padding: 0 15px 5px 15px;
@@ -38,6 +92,7 @@ $font-color2: #cbcbcb;
       .msrp {
         margin-right: 10px;
         font-style: italic;
+        text-decoration-line: line-through;
       }
 
       .price {
@@ -49,6 +104,9 @@ $font-color2: #cbcbcb;
   }
 }
 
-.msrp {
-  text-decoration-line: line-through;
+.footer {
+  background-color: $font-color1;
+  border-top: 12px solid $accent-color;
+  height: 200px;
+  width: 100vw;
 }
