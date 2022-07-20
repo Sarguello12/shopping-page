@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { searchFunctionality } from "../Services/SearchFunctionality";
 import ResultsCards from "./ResultsCards";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const SearchResults = () => {
   // results state will contain array of objects fetched from API
@@ -59,13 +61,23 @@ const SearchResults = () => {
   return (
     <div>
       <div className="searchbar">
+        <h1>Shopping</h1>
         <form onSubmit={searchHandler}>
           <input
             onChange={searchChangeHandler}
             placeholder="search for item, color..."
           ></input>
-          <button type="submit">Search</button>
+          <button type="submit">
+            <FontAwesomeIcon icon={faSearch} type="submit" />
+          </button>
         </form>
+      </div>
+      <div className="suggestions-container">
+        <h4>Jeans</h4>
+        <h4>Tops</h4>
+        <h4>Dresses</h4>
+        <h4>Swimwear</h4>
+        <h4>Accessories</h4>
       </div>
 
       <div className="results-container">

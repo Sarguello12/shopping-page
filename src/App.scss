@@ -1,44 +1,72 @@
 $primary-font: "Montserrat", sans-serif;
-$accent-color: #3a23ad;
+$accent-color1: #4b01e0;
+$accent-color2: #8c2be2;
 $font-color1: #616161;
 $font-color2: #aeaeae;
 $font-color3: #e9e9ed;
 
+body {
+  margin: 0;
+}
+
 .app {
   font-family: $primary-font;
-  width: 100vw;
   height: 100vh;
 }
 
 .searchbar {
+  top: 0px;
   background-color: $font-color2;
   width: 100vw;
-  height: 150px;
+  height: 100spx;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border-bottom: 10px solid $accent-color;
+  border-bottom: 5px solid $accent-color1;
+  position: fixed;
 
   input {
-    width: 400px;
-    padding: 15px 10px;
+    width: 250px;
+    padding: 13px 10px;
     background-color: $font-color3;
     margin-top: 10px;
     margin-bottom: 10px;
   }
 
   button {
-    display: block;
     margin: auto;
-    background-color: $accent-color;
+    background-color: $accent-color1;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
     font-size: 17px;
   }
+
+  button:hover {
+    background-color: $accent-color2;
+    cursor: pointer;
+  }
+}
+
+.suggestions-container {
+  background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 80px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+
+  h4 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 20px;
+  }
 }
 
 .results-container {
+  width: 100%;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -53,14 +81,14 @@ $font-color3: #e9e9ed;
   button {
     font-size: 17px;
     width: 100px;
-    background-color: $accent-color;
+    background-color: $accent-color1;
     color: #ffffff;
     padding: 10px 20px;
     border: none;
   }
 
   button:hover {
-    background-color: $font-color1;
+    background-color: $accent-color2;
     cursor: pointer;
   }
 }
@@ -98,7 +126,7 @@ $font-color3: #e9e9ed;
       .price {
         font-weight: bold;
         font-size: 20px;
-        color: $accent-color;
+        color: $accent-color1;
       }
     }
   }
@@ -106,7 +134,7 @@ $font-color3: #e9e9ed;
 
 .footer {
   background-color: $font-color1;
-  border-top: 12px solid $accent-color;
+  border-top: 12px solid $accent-color1;
   height: 200px;
   width: 100vw;
 }
